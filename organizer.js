@@ -28,8 +28,31 @@ async function read(folder) {
     if (entry.isDirectory()) {
       await read(filePath);
     } else {
-      console.log("File:", filePath);
+      const ext = path.extname(filePath);
+      const folderPath = path.join(folder, ext.slice(1));
+      await fs.mkdir(folderPath, { recursive: true });
+      const destination = path.join(folderPath, entry.name);
+      const dist = await getUniquePath(destination, entry.name, folderPath);
+      await fs.rename(filePath, dist);
     }
   }
 }
+
 await read(folder);
+
+async function getUniquePath(destination, fileName, folderPath) {
+  const parsed = path.parse(fileName);
+  let count = 1;
+  while (true) {
+    try {
+      await fs.access(destination);
+      destination = path.join(
+        folderPath,
+        `${parsed.name}-${count}${parsed.ext}`,
+      );
+      count++;
+    } catch {
+      return destination;
+    }
+  }
+}
