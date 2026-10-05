@@ -1,0 +1,29 @@
+{
+  "name": "file-organizer-cli",
+  "version": "1.0.0",
+  "description": "Command-line tool to sort files by extension, date or size, and to find duplicates.",
+  "type": "module",
+  "main": "organize.js",
+  "scripts": {
+    "start": "node organize.js"
+  },
+  "keywords": [
+    "cli",
+    "file-organizer",
+    "duplicates",
+    "nodejs"
+  ],
+  "author": "sami-dev-dz",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sami-dev-dz/file-organizer-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sami-dev-dz/file-organizer-cli/issues"
+  },
+  "homepage": "https://github.com/sami-dev-dz/file-organizer-cli#readme",
+  "engines": {
+    "node": ">=18"
+  }
+}
